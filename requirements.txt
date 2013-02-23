@@ -1,0 +1,2 @@
+BeautifulSoup
+Django==1.3.7
