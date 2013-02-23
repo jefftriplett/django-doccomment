@@ -9,7 +9,7 @@
 <h5>Comment Form</h5>
 {% if user.is_authenticated %}
 {% get_comment_form for element as form %}
-<form action='{% comment_form_target %}' method='post'>
+<form action='{% comment_form_target %}' method='post'> {% csrf_token %}
     <div class="comment-form-row">
         {{ form.comment }}
     </div>
@@ -40,11 +40,11 @@ You need to <a href='{% url auth_login %}'>log in</a> to post a comment.
 {% for comment in comment_list %}
     <p>
         <em>
-            <strong>{{ comment.user_name }}</strong> said 
-            on {{ comment.submit_date|date }} 
-            at {{ comment.submit_date|time }} 
-            -- 
-        </em> 
+            <strong>{{ comment.user_name }}</strong> said
+            on {{ comment.submit_date|date }}
+            at {{ comment.submit_date|time }}
+            --
+        </em>
         {{ comment.comment }}
     </p>
 {% empty %}

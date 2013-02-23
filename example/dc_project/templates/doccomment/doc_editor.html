@@ -27,7 +27,7 @@
 </h1>
 
 
-<form id='editor-form' action='' method='post'>
+<form id='editor-form' action='' method='post'>{% csrf_token %}
 
     <div class='editor-form-row longer'>
         {{ form.title.errors }}
@@ -35,7 +35,7 @@
         {{ form.title }}
     </div>
 
-    
+
     <div class='markThisUp'>
         {{ form.body.errors }}
         {{ form.body }}
