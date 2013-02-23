@@ -1,6 +1,7 @@
 
 # TODO: Template tags to access these permissions in template
 
+
 class Permission(object):
     """
     Class which holds routines to check if user has permissions for

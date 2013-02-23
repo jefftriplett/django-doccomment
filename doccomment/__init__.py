@@ -2,6 +2,7 @@ from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.importlib import import_module
 
+
 DEFAULT_PERMISSION_MODULE = 'doccomment.permissions'
 
 

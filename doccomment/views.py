@@ -1,28 +1,19 @@
-from django.shortcuts import render_to_response
-from django.shortcuts import get_object_or_404
-from django.template import RequestContext
-from django.core.urlresolvers import reverse
-from django.views.generic import list_detail
-from django.contrib.auth.decorators import user_passes_test
-from django.http import Http404
-from django.http import HttpResponse
-from django.http import HttpResponseForbidden
-from django.http import HttpResponseRedirect
-from django.core.exceptions import SuspiciousOperation
-from django.contrib.comments.models import Comment
-from django.utils import simplejson
 from django.conf import settings
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib.comments.models import Comment
+from django.core.exceptions import SuspiciousOperation
+from django.core.urlresolvers import reverse
+from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render_to_response
+from django.template import RequestContext
+from django.utils import simplejson
 
-from models import Document
-from models import DocumentVersion
-from models import DocumentElement
-from forms import DocumentForm
+from . import get_parser_module, get_permission_class
+from .forms import DocumentForm
+from .models import Document, DocumentVersion
 
-# Get class to use for checking user permissions
-from doccomment import get_permission_class
+
 Permission = get_permission_class()
-# Get class for parsing author input to HTML
-from doccomment import get_parser_module
 Parser = get_parser_module()
 
 

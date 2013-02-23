@@ -1,6 +1,7 @@
-from markdown import markdown
 from BeautifulSoup import BeautifulSoup, Tag
 from django.conf import settings
+from markdown import markdown
+
 
 DEFAULT_EXTENSIONS = []
 DEFAULT_SAFEMODE = True

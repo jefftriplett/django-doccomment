@@ -1,10 +1,10 @@
-from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.comments.models import Comment
-from django.utils.translation import ugettext_lazy as _
+from django.db import models
 from django.template.defaultfilters import slugify
+from django.utils.translation import ugettext_lazy as _
 
-from managers import DocumentManager
+from .managers import DocumentManager
 
 
 class Document(models.Model):
@@ -87,7 +87,7 @@ class DocumentVersion(models.Model):
     def __unicode__(self):
         return "%s (v%s)" % (self.document, self.version_string)
 
-        
+
 class DocumentElement(models.Model):
     """
     A top-level element in a rendered document.
@@ -109,14 +109,14 @@ class DocumentElement(models.Model):
 class CommentStatus(models.Model):
     """
     A model to extend the attributes of contrib.comments.models.Comment.
-    
+
     The link is created on comment creation by hooking on to the post_save
     signal.
-    
+
     We did not simple extend the Comment class as doing so would require users
     to set their settings.COMMENT_APP to our app and effectively hijacking the
-    whole contrib.comment apps. 
-    
+    whole contrib.comment apps.
+
     We need to play nice as users may be using contrib.comments for other apps
     in their project.
     """
