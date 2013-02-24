@@ -15,7 +15,7 @@ class Document(models.Model):
 
     title = models.CharField(_("title"), max_length=200)
     slug = models.SlugField(editable=False, max_length=40)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User, related_name='%(app_label)s_%(class)s_documents')
     body = models.TextField(_("document text"))
     published = models.BooleanField(_("published"), default=False)
     date_created = models.DateTimeField(_("date_created"), auto_now_add=True)
@@ -72,7 +72,7 @@ class DocumentVersion(models.Model):
     """
     document = models.ForeignKey(Document)
     title = models.CharField(_("title"), max_length=200)  # Snapshot of the title
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User, related_name='%(app_label)s_%(class)s_document_versions')
     body = models.TextField(_("document text"))  # Snapshot of document
     rendered = models.TextField(_("rendered document"))
     elem_count = models.IntegerField(_("number of elements in page"))
