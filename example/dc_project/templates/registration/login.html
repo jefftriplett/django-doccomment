@@ -10,8 +10,8 @@
 {% endif %}
 
 <div id='login-form'>
-    
-    <form method="post" action="." class='login'>
+
+    <form method="post" action="." class='login'>{% csrf_token %}
         <div class='form-row {{ form.username.errors|yesno:"has-error," }}'>
             {{ form.username.errors }}
             <label for='id_username'>Username:</label>
