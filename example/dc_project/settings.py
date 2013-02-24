@@ -42,9 +42,9 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 MEDIA_ROOT = rel('media')
 MEDIA_URL = '/media/'
 #STATIC_ROOT = rel('static')
-STATIC_URL = '/static_assets/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    rel('static')
+    rel('assets')
 ]
 
 STATICFILES_FINDERS = (
