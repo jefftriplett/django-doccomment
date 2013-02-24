@@ -27,22 +27,22 @@ urlpatterns = patterns('',
 
     # ----- Authors' pages -----
 
-    url(r'^draft/list$',
+    url(r'^draft/list/$',
         view='doccomment.views.draft_list',
         name='doccomment_draft_list',
     ),
 
-    url(r'^draft/new$',
+    url(r'^draft/new/$',
         view='doccomment.views.draft_new',
         name='doccomment_draft_new',
     ),
 
-    url(r'^draft/(?P<id>\d+)/edit$',
+    url(r'^draft/(?P<id>\d+)/edit/$',
         view='doccomment.views.draft_edit',
         name='doccomment_draft_edit',
     ),
 
-    url(r'^draft/(?P<id>\d+)/preview$',
+    url(r'^draft/(?P<id>\d+)/preview/$',
         view='doccomment.views.draft_preview',
         name='doccomment_draft_preview',
     ),
