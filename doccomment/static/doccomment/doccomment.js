@@ -4,7 +4,7 @@
  *    doccomment.init();
  *    doccomment.loadCommentCount(<URL_FOR_AJAX_CALL>);
  *
- * The script will locate doccomment blocks with and append divs to 
+ * The script will locate doccomment blocks with and append divs to
  * display comments next to them.
  *
  * Internal parameters can be modified by running init as such:
@@ -41,7 +41,7 @@ var doccomment = function($) {
      * Positioning of div will be handled later by alignCommentDiv()
      */
     var createCommentDiv = function () {
-        /* look for content classes, and extract the ID to build 
+        /* look for content classes, and extract the ID to build
          * the associated Comment DIV
          */
         var rePattern = new RegExp("^" + param.contentIDPrefix + "(\\d+)$");
@@ -54,7 +54,7 @@ var doccomment = function($) {
             if (found && found.length == 2) {
                 var id = found[1];
                 var contentDIV = $(this);
-                
+
                 /* create comment DIV */
                 var commentDIV = $('<div></div>').hide()
                     .addClass(param.commentClass)
@@ -65,7 +65,7 @@ var doccomment = function($) {
 
                 /* store reference to comment DIV in contentDIV */
                 contentDIV.data('cdiv', commentDIV);
-                
+
                 /* add/remove class on mouseover/out */
                 contentDIV.hover(
                     function() { $(this).addClass(param.hoverClass); },
@@ -76,7 +76,7 @@ var doccomment = function($) {
             $(this).addClass(param.hasdivMarker);
 
         }); /* ends for each content div */
-        
+
     };
 
     /* align comment DIV to the left of content DIV
@@ -92,8 +92,8 @@ var doccomment = function($) {
         $("." + param.contentClass).each(function() {
             var offset = $(this).offset();
             var height = $(this).css('height');
-            if (height < param.cdivMinHeight) { 
-                height = param.cdivMinHeight; 
+            if (height < param.cdivMinHeight) {
+                height = param.cdivMinHeight;
                 $(this).css('height', param.cdivMinHeight);
             }
 
@@ -109,7 +109,7 @@ var doccomment = function($) {
     /* load comment count and URL using AJAX call */
     var do_loadCommentCount = function(ajax_url) {
         $.ajax({
-            url      : ajax_url, 
+            url      : ajax_url,
             dataType : 'json',
             cache    : false,
             success  : function(data) {
@@ -129,7 +129,7 @@ var doccomment = function($) {
         /* locate content div */
         var contentDIV = $('#' + param.contentIDPrefix + id);
         if (!contentDIV) { return; } /* cannot proceed */
-        
+
         /* add SPAN to comment div */
         contentDIV.data('cdiv').html(
             "<span class='"+param.ccountClass+"'><a href='"+ url +"'>"+ ccount +"</a></span>"
@@ -154,7 +154,7 @@ var doccomment = function($) {
 
     /* public functions */
     return {
-        
+
         init : function(settings) {
 
             /* allow users to modify params */
@@ -169,9 +169,9 @@ var doccomment = function($) {
             /* create comment DIVs and align them to content */
             createCommentDiv();
             alignCommentDiv();
-            
+
             /* realign DIVs when window is resized */
-            $(window).resize(alignCommentDiv);        
+            $(window).resize(alignCommentDiv);
         },
 
         loadCommentCount : function(ajax_url) {

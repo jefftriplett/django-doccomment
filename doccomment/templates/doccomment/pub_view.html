@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ version.title }} {{ block.super }}{% endblock title %}
+
+{% block head %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}doccomment/doccomment.js"></script>
+<link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}doccomment/doccomment.css" />
+<script type='text/javascript'>
+$(function() {
+    var ajax_url = '{% url doccomment_ajax_get_comment_count version.id %}';
+    doccomment.init();
+    doccomment.loadCommentCount(ajax_url);
+});
+</script>
+{% endblock head %}
+
+{% block content %}
+<h1>{{ version.title }}</h1>
+<ul>
+    <li><strong>Author:</strong> {{ version.author.get_full_name|default:version.author.username }}</li>
+    <li><strong>Published:</strong> {{ version.date_published|date }}</li>
+    <li><strong>Version:</strong> {{ version.version_string }}</li>
+</ul>
+<hr />
+<div class='doccomment' id='doccomment'>
+    {{ version.rendered|safe }}
+</div>
+<hr />
+{% endblock content %}

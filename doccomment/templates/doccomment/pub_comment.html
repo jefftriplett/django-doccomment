@@ -1,8 +1,10 @@
 {% extends "base.html" %}
-{% load comments %}
-{% block title %}Comments for {{ version.title }} {{ block.super }}{% endblock %}
-{% block content %}
 
+{% load comments %}
+
+{% block title %}Comments for {{ version.title }} {{ block.super }}{% endblock title %}
+
+{% block content %}
 <h1>Comments for <a href='{{ origin }}'>{{ version.title }} (v{{ version.version_string }})</a></h1>
 <div class='grid_8 clearfix'><div id='content-left'>
 
@@ -52,4 +54,4 @@ You need to <a href='{% url auth_login %}'>log in</a> to post a comment.
 {% endfor %}
 
 </div></div>
-{% endblock %}1
+{% endblock content %}

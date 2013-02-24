@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Doc Editor {{ block.super }}{% endblock title %}
+
+{% block head %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}markitup/jquery.markitup.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}markitup/sets/markdown/set.js"></script>
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}markitup/skins/markitup/style.css" />
+<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}markitup/sets/markdown/style.css" />
+<script>
+    $(function() {
+        mySettings.previewParserPath = '{% url doccomment_ajax_get_parser_preview %}';
+        $('#editor-form').find('.markThisUp > :input[type=textarea]').markItUp(mySettings);
+    });
+</script>
+{% endblock head %}
+
+{% block content %}
+<h1>
+{% if not document %}
+    New Document
+{% else %}
+    Edit Document
+{% endif %}
+</h1>
+
+<form id='editor-form' action='' method='post'>{% csrf_token %}
+
+    <div class='editor-form-row longer'>
+        {{ form.title.errors }}
+        <label for='id_title'>Title:</label>
+        {{ form.title }}
+    </div>
+
+
+    <div class='markThisUp'>
+        {{ form.body.errors }}
+        {{ form.body }}
+    </div>
+    <em>Note: You can use <a href='http://daringfireball.net/projects/markdown/'>markdown</a> to format your text.</em>
+    <div class='submit-row'>
+        <input type="submit" name='save' value="Save Changes" />
+        <input type="submit" name='save-and-continue' value="Save and Continue Editing" />
+    </div>
+</form>
+{% endblock content %}

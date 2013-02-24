@@ -1,17 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Draft List {{ block.super }}{% endblock %}
-
+{% block title %}Draft List {{ block.super }}{% endblock title %}
 
 {% block content %}
 <h1>Manage Documents</h1>
 
-
 <ul>
 {% for draft in draft_list %}
     <li>
-        <a href='{% url doccomment_draft_edit draft.id %}'>{{ draft.title }}</a> 
-        by {{ draft.author|default:draft.author.username }} 
+        <a href='{% url doccomment_draft_edit draft.id %}'>{{ draft.title }}</a>
+        by {{ draft.author|default:draft.author.username }}
         [ <a href='{% url doccomment_draft_preview draft.id %}'>Preview and publish</a> ]
     </li>
 {% empty %}
@@ -21,4 +19,4 @@
 
 [ <a href='{% url doccomment_draft_new %}'>Create new document</a> ]
 
-{% endblock %}
+{% endblock content %}

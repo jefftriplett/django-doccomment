@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}Draft List {{ block.super }}{% endblock %}
+{% block title %}Draft List {{ block.super }}{% endblock title %}
 
 {% block content %}
-
 <h1>Preview of: {{ draft.title }}</h1>
 <ul>
     <li><strong>Author:</strong> {{ draft.author|default:draft.author.username }}</li>
@@ -11,8 +10,8 @@
     <li><strong>Last Modified:</strong> {{ draft.date_updated|timesince }} ago</li>
     {% if draft.published %}
     <li>
-        <strong>Last published:</strong> 
-        Version {{ draft.latest_version }} 
+        <strong>Last published:</strong>
+        Version {{ draft.latest_version }}
         on {{ draft.date_published|date }}
         (There have been {{ draft.has_modification|yesno:"some,no" }} changes since then)
     </li>
@@ -39,4 +38,4 @@
 [ <a href='{% url doccomment_draft_edit draft.id %}'>Edit this document</a> ]
 {% endifequal %}
 <br /><br />
-{% endblock %}
+{% endblock content %}
