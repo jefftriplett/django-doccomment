@@ -38,19 +38,19 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 MEDIA_ROOT = rel('media')
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/media/'
+#STATIC_ROOT = rel('static')
+STATIC_URL = '/static_assets/'
+STATICFILES_DIRS = [
+    rel('static')
+]
 
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = rel('/media/admin/')
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'n9jpznxmj+cqr(zm)6la)r6j3r2uwk=qs%2___+40gd#&ywmqs'
@@ -91,6 +91,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.comments',
+    'django.contrib.staticfiles',
 
     'doccomment',
 )

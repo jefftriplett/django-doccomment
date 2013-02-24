@@ -1,6 +1,6 @@
-from django.conf import settings
 from django.conf.urls.defaults import *
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 admin.autodiscover()
@@ -26,16 +26,4 @@ urlpatterns = patterns('',
 
     # redirect all other urls to doccomment
     (r'^', include('doccomment.urls')),
-)
-
-# serve static files if running DEBUG mode
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        url(r'^media/(?P<path>.*)$',
-            view='django.views.static.serve',
-            kwargs={
-                'document_root': settings.MEDIA_ROOT,
-                'show_indexes': True,
-            },
-        ),
-    )
+) + staticfiles_urlpatterns()
