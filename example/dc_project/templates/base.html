@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link href="{{ MEDIA_URL }}css/reset.css" media="all" rel="stylesheet" type="text/css" />
-        <link href="{{ MEDIA_URL }}css/text.css" media="all" rel="stylesheet" type="text/css" />
-        <link href="{{ MEDIA_URL }}css/960.css" media="all" rel="stylesheet" type="text/css" />
-        <link href="{{ MEDIA_URL }}css/style.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="{{ STATIC_URL }}css/reset.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="{{ STATIC_URL }}css/text.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="{{ STATIC_URL }}css/960.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="{{ STATIC_URL }}css/style.css" media="all" rel="stylesheet" type="text/css" />
         <title>{% block title %}{% endblock %}(DocComment example)</title>
 
         {% block head %}{% endblock %}
@@ -20,7 +20,7 @@
                 </a>
             </div>
             <div id='user-links'>
-                Welcome 
+                Welcome
                 {% if user.is_authenticated %}
                     <strong>{{ user.username }}</strong>.
                     [ {% if user.is_staff %}<a href='{% url doccomment_draft_list %}'>Manage Documents</a> |{% endif %}
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div id='footer'>
-        This is a example django project that uses <a href='http://github.com/shawnchin/django-doccomment'>DocComment</a>. 
+        This is a example django project that uses <a href='http://github.com/shawnchin/django-doccomment'>DocComment</a>.
     </div>
     </body>
 </html>
