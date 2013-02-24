@@ -58,7 +58,6 @@ def ajax_get_comment_count(request, v_id):
 def ajax_get_parser_preview(request):
     if not request.is_ajax() and not settings.DEBUG:
         return HttpResponseForbidden('Are you lost?')
-    rendered = 'Johnny: "Need input!"'
     if request.POST:
         processed = Parser.parse(request.POST.get('data'))
     return HttpResponse(processed)
